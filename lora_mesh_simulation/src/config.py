@@ -7,9 +7,7 @@ de coût pour Dijkstra et les paramètres d'optimisation (MCLP / SCP).
 """
 import math
 
-# ==========================================
-# 1. PARAMÈTRES RADIO ET PHYSIQUES (Profil 2)
-# ==========================================
+# PARAMÈTRES RADIO ET PHYSIQUES (Profil 2)
 # Puissance d'émission par défaut en dBm (ex: 14 dBm = limite légale UE 868 MHz)
 TX_POWER_DBM: float = 14.0
 
@@ -31,9 +29,7 @@ PL_1KM = 32.44 + 20 * math.log10(FREQ_MHZ)  # Atténuation à 1 km
 MAX_DISTANCE_KM = 10 ** ((TX_POWER_DBM - RSSI_THRESHOLD - PL_1KM) / (10 * PATH_LOSS_EXPONENT))
 
 
-# ==========================================
-# 2. POIDS DE PONDÉRATION DE ROUTAGE (Profil 3)
-# ==========================================
+# POIDS DE PONDÉRATION DE ROUTAGE (Profil 3)
 # Fonction de coût composite : C = alpha*D + beta*S + gamma*K + delta*B
 # La somme des poids doit égaler 1.0 pour une normalisation cohérente
 ALPHA_DISTANCE: float = 2 / 10   # Poids de la distance géométrique
@@ -42,22 +38,18 @@ GAMMA_CONGESTION: float = 3 / 10 # Poids du taux d'occupation du buffer (trafic)
 DELTA_BATTERY: float = 1 / 10    # Poids du niveau de décharge de batterie
 
 
-# ==========================================
-# 3. CONTRAINTES D'OPTIMISATION & COUVERTURE (Profil 4)
-# ==========================================
+# CONTRAINTES D'OPTIMISATION & COUVERTURE (Profil 4)
 # Budget maximum p (nombre maximal de nouveaux modules LoRa à déployer)
 BUDGET_P_MODULES: int = 5
 
 # Mode d'optimisation par défaut : "MCLP" (Maximal Cover) ou "SCP" (Set Covering)
 OPTIMIZATION_MODE: str = "MCLP"
 
+# CHEMINS DE FICHIERS & CHARGEMENT (Profil 1)
 
-# ==========================================
-# 4. CHEMINS DE FICHIERS & CHARGEMENT (Profil 1)
-# ==========================================
 DATA_DIR: str = "data/"
 PYLONES_CSV_PATH: str = "data/pylones_fixes.csv"
 TERRITOIRE_JSON_PATH: str = "data/territoire.json"
-
-ALPHA_PORTEE_RADIO: float = 0.15     # Transparence des disques de couverture (0 à 1)
+# Transparence des disques de couverture (0 à 1)
+ALPHA_PORTEE_RADIO: float = 0.15     
 
