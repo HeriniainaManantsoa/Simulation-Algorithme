@@ -1,0 +1,60 @@
+# ==========================================
+# Caches Python & Fichiers Compilés
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ==========================================
+# Environments Virtuels
+# ==========================================
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# ==========================================
+# Fichiers de Configuration / IDE
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ==========================================
+# Logs, Fichiers Temporaires & Sorties
+# ==========================================
+*.log
+*.tmp
+temp/
+outputs/
+*.png
+*.jpg
+*.pdf
+
+# ==========================================
+# Solveurs de Recherche Opérationnelle (PuLP / CBC / GLPK)
+# ==========================================
+# Fichiers temporaires générés par les solveurs lors des calculs MCLP / SCP
+*.lp
+*.mps
+*.sol
+*.mps.gz
+
+# ==========================================
+# Tests & Couverture de Code (pytest)
+# ==========================================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==========================================
+# Données Sensibles ou Fichiers Locaux (Optionnel)
+# ==========================================
+# Décommentez si vous souhaitez ignorer des fichiers de données d'essai spécifiques
+# data/test_local.json
