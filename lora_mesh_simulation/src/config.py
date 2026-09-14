@@ -1,9 +1,14 @@
 import math
 
+<<<<<<< HEAD
 # ==========================================================
 # PARAMÈTRES RADIO LoRaWAN
 # ==========================================================
 
+=======
+# PARAMÈTRES RADIO ET PHYSIQUES (Profil 2)
+# Puissance d'émission par défaut en dBm (ex: 14 dBm = limite légale UE 868 MHz)
+>>>>>>> 3b43fb642458049b75ac5f8e5cd976197ae9b265
 TX_POWER_DBM: float = 14.0
 
 # Fréquence LoRaWAN Europe (MHz)
@@ -35,17 +40,29 @@ DISTANCE_PLANCHER_KM: float = 0.001
 # PONDÉRATION DU SCORE DE COUVERTURE
 # ==========================================================
 
+<<<<<<< HEAD
+=======
+# POIDS DE PONDÉRATION DE ROUTAGE (Profil 3)
+# Fonction de coût composite : C = alpha*D + beta*S + gamma*K + delta*B
+# La somme des poids doit égaler 1.0 pour une normalisation cohérente
+>>>>>>> 3b43fb642458049b75ac5f8e5cd976197ae9b265
 ALPHA_DISTANCE: float = 2 / 10   # Poids de la distance géométrique
 BETA_SIGNAL: float = 4 / 10      # Poids de la dégradation du signal (RSSI)
 GAMMA_CONGESTION: float = 3 / 10 # Poids du taux d'occupation du buffer (trafic)
 DELTA_BATTERY: float = 1 / 10    # Poids du niveau de décharge de batterie
 
+<<<<<<< HEAD
+=======
+
+# CONTRAINTES D'OPTIMISATION & COUVERTURE (Profil 4)
+>>>>>>> 3b43fb642458049b75ac5f8e5cd976197ae9b265
 # Budget maximum p (nombre maximal de nouveaux modules LoRa à déployer)
 BUDGET_P_MODULES: int = 5
 
 # Mode d'optimisation par défaut : "MCLP" (Maximal Cover) ou "SCP" (Set Covering)
 OPTIMIZATION_MODE: str = "MCLP"
 
+<<<<<<< HEAD
 # ==========================================================
 # SIMULATION D'ÉTAT (batterie / trafic)
 # ==========================================================
@@ -59,9 +76,18 @@ VARIATION_BUFFER_MAX: float = 10.0
 # ==========================================================
 # CHEMINS DE DONNÉES
 # ==========================================================
+=======
+# CHEMINS DE FICHIERS & CHARGEMENT (Profil 1)
+>>>>>>> 3b43fb642458049b75ac5f8e5cd976197ae9b265
 
 DATA_DIR: str = "data/"
 PYLONES_CSV_PATH: str = "data/pylones_fixes.csv"
 TERRITOIRE_JSON_PATH: str = "data/territoire.json"
+<<<<<<< HEAD
 
 ALPHA_PORTEE_RADIO: float = 0.15     # Transparence des disques de couverture (0 à 1)
+=======
+# Transparence des disques de couverture (0 à 1)
+ALPHA_PORTEE_RADIO: float = 0.15     
+
+>>>>>>> 3b43fb642458049b75ac5f8e5cd976197ae9b265
