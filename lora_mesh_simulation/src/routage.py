@@ -1,5 +1,5 @@
 import copy
-from dijkstra import dijkstra
+from dijkstra import dijkstra, construire_graphe
 
 def yen(graphe, source, destination, nbrChemin):
     # stocke les K plus courts chemins validés
@@ -72,3 +72,44 @@ def yen(graphe, source, destination, nbrChemin):
         courtsChemins.append(meilleurCandidat)
 
     return courtsChemins
+
+
+def yen_depuis_noeuds(noeuds, id_source, id_destination, nbrChemin):
+    """
+    Variante de yen() qui prend directement la liste de Noeud renvoyée
+    par data_loader.charger_pylones_fixes() (ou toute liste de Noeud,
+    fixes + candidats), au lieu d'exiger un graphe déjà construit à la main.
+
+    - Construit le graphe via dijkstra.construire_graphe(noeuds), qui
+      relie les nœuds selon liaison_possible() (portée radio DMAX) et
+      pondère chaque arête par la distance Haversine.
+    - Appelle yen() normalement (elle travaille sur des ID, donc rien
+      à changer côté algorithme).
+    - Retraduit chaque chemin d'une liste d'ID vers une liste de Noeud,
+      pour rester cohérent avec le reste du projet qui manipule des
+      objets Noeud (ex. pour afficher Nom_Site, Operateur, etc. via
+      Noeud.__str__).
+
+    Paramètres
+    ----------
+    noeuds : list[Noeud]
+    id_source, id_destination : int
+        ID des nœuds de départ/arrivée (attribut Noeud.ID).
+    nbrChemin : int
+        Nombre de chemins à calculer (K de l'algorithme de Yen).
+
+    Retour
+    ------
+    list[tuple[float, list[Noeud]]]
+        Liste de (coût_total_km, chemin) triée par coût croissant.
+    """
+
+    graphe = construire_graphe(noeuds)
+    resultats = yen(graphe, id_source, id_destination, nbrChemin)
+
+    noeuds_par_id = {n.ID: n for n in noeuds}
+
+    return [
+        (cout, [noeuds_par_id[id_] for id_ in chemin])
+        for cout, chemin in resultats
+    ]
