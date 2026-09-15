@@ -250,7 +250,7 @@ def main():
     # Étape 1 : réseau existant
     # --------------------------------------------------------
 
-    titre("1. RÉSEAU EXISTANT (pylônes fixes)")
+    titre("1. Réseau éxistant (pylônes fixes)")
 
     pylones_fixes, donnees_reelles = charger_pylones_fixes_ou_demo()
     source_donnees = config.PYLONES_CSV_PATH if donnees_reelles else "démonstration"
@@ -269,7 +269,7 @@ def main():
     # Étape 2 : génération automatique de la grille (zones + candidats)
     # --------------------------------------------------------
 
-    titre("2. GÉNÉRATION DE LA GRILLE (zones à couvrir + candidats LoRa)")
+    titre("2. Génération de la grille (zones à couvrir + candidats LoRa)")
 
     zones, candidats = generer_zones_et_candidats_auto(pylones_fixes)
 
@@ -290,7 +290,7 @@ def main():
         # Étape 3 : algorithme de couverture
         # ----------------------------------------------------
 
-        titre("3. ALGORITHME DE COUVERTURE")
+        titre("3. Algorithme de couverture")
         print(f"mode = {config.OPTIMIZATION_MODE}, dmax = {config.DMAX:.2f} km, "
               f"budget = {config.BUDGET_P_MODULES} module(s)\n")
 
@@ -334,7 +334,7 @@ def main():
     # Étape 4 : réseau final = pylônes fixes + modules retenus
     # --------------------------------------------------------
 
-    titre("4. RÉSEAU FINAL (pylônes fixes + modules retenus)")
+    titre("4. Réseau final (pylônes fixes + modules retenus)")
 
     reseau = pylones_fixes + noeuds_retenus
     print(f"Total : {len(reseau)} nœud(s)\n")
@@ -349,9 +349,9 @@ def main():
     # Étape 5 : routage d'un message
     # --------------------------------------------------------
 
-    titre("5. ROUTAGE D'UN MESSAGE")
+    titre("5. Routage d'un message")
 
-    source, destination = reseau[0], reseau[-1]
+    source, destination = reseau[5], reseau[-1]
     print(f"{source.Nom_Site or source.ID} veut envoyer un message à "
           f"{destination.Nom_Site or destination.ID}\n")
 
@@ -373,7 +373,7 @@ def main():
     # Étape 6 (bonus) : chemins alternatifs, algorithme de Yen
     # --------------------------------------------------------
 
-    titre("6. CHEMINS ALTERNATIFS (Yen)")
+    titre("6. Chemins alternatifs (Yen)")
 
     k = min(3, len(reseau))
     chemins = yen_depuis_noeuds(reseau, source.ID, destination.ID, nbrChemin=k)
