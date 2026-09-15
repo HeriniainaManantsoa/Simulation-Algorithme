@@ -48,10 +48,7 @@ MAX_POINTS_GRILLE = 60  # garde-fou pour ne pas générer un problème d'optimis
 
 
 def titre(texte):
-    print("\n" + "=" * 60)
     print(texte)
-    print("=" * 60)
-
 
 # DONNÉES : pylônes fixes réels, avec repli de démonstration
 
