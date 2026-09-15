@@ -48,14 +48,9 @@ MAX_POINTS_GRILLE = 60  # garde-fou pour ne pas générer un problème d'optimis
 
 
 def titre(texte):
-    print("\n" + "=" * 60)
     print(texte)
-    print("=" * 60)
 
-
-# ============================================================
-# 1. DONNÉES : pylônes fixes réels, avec repli de démonstration
-# ============================================================
+# DONNÉES : pylônes fixes réels, avec repli de démonstration
 
 def filtrer_pylones_valides(pylones):
     """
@@ -107,9 +102,7 @@ def charger_pylones_fixes_ou_demo():
     return pylones, False
 
 
-# ============================================================
-# 2. GÉNÉRATION AUTOMATIQUE DE LA GRILLE (zones + candidats)
-# ============================================================
+#  GÉNÉRATION AUTOMATIQUE DE LA GRILLE (zones + candidats)
 
 def _calculer_bbox(pylones_fixes, marge_km):
     """
@@ -240,15 +233,10 @@ def generer_zones_et_candidats_auto(pylones_fixes, max_points=MAX_POINTS_GRILLE)
     return zones, candidats
 
 
-# ============================================================
-# 3. PROGRAMME PRINCIPAL
-# ============================================================
+#  PROGRAMME PRINCIPAL
 
 def main():
-
-    # --------------------------------------------------------
     # Étape 1 : réseau existant
-    # --------------------------------------------------------
 
     titre("1. Réseau éxistant (pylônes fixes)")
 
@@ -265,9 +253,7 @@ def main():
     for p in pylones_fixes:
         print(f"  - {p}")
 
-    # --------------------------------------------------------
     # Étape 2 : génération automatique de la grille (zones + candidats)
-    # --------------------------------------------------------
 
     titre("2. Génération de la grille (zones à couvrir + candidats LoRa)")
 
@@ -286,9 +272,7 @@ def main():
         noeuds_retenus = []
     else:
 
-        # ----------------------------------------------------
         # Étape 3 : algorithme de couverture
-        # ----------------------------------------------------
 
         titre("3. Algorithme de couverture")
         print(f"mode = {config.OPTIMIZATION_MODE}, dmax = {config.DMAX:.2f} km, "
@@ -330,7 +314,6 @@ def main():
 
             noeuds_retenus = [candidats_par_id[id_] for id_ in resultat_algo["noeuds_selectionnes"]]
 
-    # --------------------------------------------------------
     # Étape 4 : réseau final = pylônes fixes + modules retenus
     # --------------------------------------------------------
 
@@ -345,9 +328,7 @@ def main():
         print("\nPas assez de nœuds pour simuler un envoi de message.")
         return
 
-    # --------------------------------------------------------
     # Étape 5 : routage d'un message
-    # --------------------------------------------------------
 
     titre("5. Routage d'un message")
 
@@ -369,9 +350,7 @@ def main():
     print(f"Chemin le plus court ({len(chemin_ids)} nœuds, {cout:.2f} km) :")
     print("  " + "  ->  ".join(noms_chemin))
 
-    # --------------------------------------------------------
     # Étape 6 (bonus) : chemins alternatifs, algorithme de Yen
-    # --------------------------------------------------------
 
     titre("6. Chemins alternatifs (Yen)")
 

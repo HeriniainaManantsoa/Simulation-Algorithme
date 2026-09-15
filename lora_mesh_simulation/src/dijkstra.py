@@ -8,16 +8,16 @@ def calculer_cout_arete(n1, n2) -> float:
     Calcule le coût composite d'une liaison radio entre n1 et n2.
     Plus le coût est bas, plus la liaison est optimale.
     """
-    # 1. Composante Distance (normalisée [0, 1])
+    # composante Distance (normalisée [0, 1])
     c_dist = n1.distance_normalisee(n2)
 
-    # 2. Composante Signal RSSI (1 - rssi_normalise car RSSI fort = coût faible)
+    # composante Signal RSSI (1 - rssi_normalise car RSSI fort = coût faible)
     c_signal = 1.0 - n1.rssi_normalise(n2)
 
-    # 3. Composante Congestion (moyenne des buffers des deux nœuds)
+    # composante Congestion (moyenne des buffers des deux nœuds)
     c_buffer = (n1.buffer_normalise() + n2.buffer_normalise()) / 2.0
 
-    # 4. Composante Batterie (coût élevé si batterie faible : 1 - niveau_batterie)
+    # composante Batterie (coût élevé si batterie faible : 1 - niveau_batterie)
     c_batterie = ( (1.0 - n1.batterie_normalisee()) + (1.0 - n2.batterie_normalisee()) ) / 2.0
 
     # Coût pondéré selon config.py
