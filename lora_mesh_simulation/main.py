@@ -352,7 +352,7 @@ def main():
     print("  " + "  ->  ".join(noms_chemin))
 
     # Étape 6 (bonus) : chemins alternatifs, algorithme de Yen
--
+
     titre("6. CHEMINS ALTERNATIFS (Yen)")
 
     k = min(3, len(reseau))
